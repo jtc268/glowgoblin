@@ -6,15 +6,15 @@ import IOKit
 import MetalKit
 import os
 
-private let logger = Logger(subsystem: "app.pingpong.rollhdr", category: "runtime")
+private let logger = Logger(subsystem: "app.glowgoblin", category: "runtime")
 
 @MainActor
 private enum AppRetention {
-    static let delegate = RollHDRAppDelegate()
+    static let delegate = GlowGoblinAppDelegate()
 }
 
 @main
-enum RollHDRMain {
+enum GlowGoblinMain {
     @MainActor
     static func main() {
         let app = NSApplication.shared
@@ -25,7 +25,7 @@ enum RollHDRMain {
 }
 
 @MainActor
-final class RollHDRAppDelegate: NSObject, NSApplicationDelegate {
+final class GlowGoblinAppDelegate: NSObject, NSApplicationDelegate {
     private var controller: XDRBoostController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -57,24 +57,26 @@ final class XDRBoostController {
     private var lastBacklightLevel: Float?
     private var displayDecisionPauseUntil = Date.distantPast
     private var boostSuspendedForBrightnessMotion = false
+    private var boostEnabledByBacklight = false
 
     private let hdrReadyThreshold: CGFloat = 1.05
     private let gammaRestoreDelay: TimeInterval = 8
     private let maxGammaFactor: Float = 1.59
+    private let boostEnableBacklightThreshold: Float = 0.74
+    private let boostDisableBacklightThreshold: Float = 0.70
     private let brightnessMotionThreshold: Float = 0.002
     private let brightnessSettleDelay: TimeInterval = 1.25
 
     func start() {
         CGDisplayRestoreColorSyncSettings()
         installObservers()
-        refreshScreens()
         pollTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             Task { @MainActor in
                 self?.tick()
             }
         }
         RunLoop.main.add(pollTimer!, forMode: .common)
-        logger.info("RollHDR started")
+        logger.info("GlowGoblin started")
     }
 
     func stop() {
@@ -86,7 +88,7 @@ final class XDRBoostController {
         readyDisplays.removeAll()
         NotificationCenter.default.removeObserver(self)
         NSWorkspace.shared.notificationCenter.removeObserver(self)
-        logger.info("RollHDR stopped")
+        logger.info("GlowGoblin stopped")
     }
 
     private func installObservers() {
@@ -124,7 +126,13 @@ final class XDRBoostController {
 
     private func tick() {
         let now = Date()
+        updateBoostActivation()
         updateBrightnessMotion(now: now)
+
+        guard boostEnabledByBacklight else {
+            deactivateBoost()
+            return
+        }
 
         if now < displayDecisionPauseUntil {
             return
@@ -136,11 +144,35 @@ final class XDRBoostController {
             lastAppliedFactors.removeAll()
         }
 
-        if pendingScreenRefresh || now.timeIntervalSince(lastScreenRefresh) > 2.0 {
+        if triggerWindows.isEmpty || pendingScreenRefresh || now.timeIntervalSince(lastScreenRefresh) > 2.0 {
             refreshScreens()
         }
         updateReadiness()
         applyBoost()
+    }
+
+    private func updateBoostActivation() {
+        guard let backlight = BuiltInBacklight.rawLevel() else {
+            boostEnabledByBacklight = false
+            return
+        }
+
+        if boostEnabledByBacklight {
+            boostEnabledByBacklight = backlight >= boostDisableBacklightThreshold
+        } else {
+            boostEnabledByBacklight = backlight >= boostEnableBacklightThreshold
+        }
+    }
+
+    private func deactivateBoost() {
+        guard !triggerWindows.isEmpty || !baselineTables.isEmpty || !readyDisplays.isEmpty else { return }
+
+        triggerWindows.values.forEach { $0.tearDown() }
+        triggerWindows.removeAll()
+        restoreGammaTables()
+        readyDisplays.removeAll()
+        boostSuspendedForBrightnessMotion = false
+        displayDecisionPauseUntil = Date.distantPast
     }
 
     private func refreshScreens() {
@@ -495,7 +527,7 @@ final class HDRTriggerView: MTKView, MTKViewDelegate {
 
         if let queue {
             renderContext = CIContext(mtlCommandQueue: queue, options: [
-                .name: "RollHDROverlay",
+                .name: "GlowGoblinOverlay",
                 .workingColorSpace: colorSpace ?? CGColorSpace(name: CGColorSpace.extendedLinearSRGB)!,
                 .workingFormat: CIFormat.RGBAf,
                 .cacheIntermediates: true,
