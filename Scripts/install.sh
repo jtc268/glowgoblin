@@ -2,9 +2,9 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-APP_NAME="RollHDR"
-EXECUTABLE="RollHDR"
-BUNDLE_ID="app.pingpong.rollhdr"
+APP_NAME="GlowGoblin"
+EXECUTABLE="GlowGoblin"
+BUNDLE_ID="app.glowgoblin"
 APP_DIR="$HOME/Applications/$APP_NAME.app"
 LAUNCH_AGENT="$HOME/Library/LaunchAgents/$BUNDLE_ID.plist"
 
@@ -14,8 +14,8 @@ swift build -c release
 mkdir -p "$APP_DIR/Contents/MacOS" "$APP_DIR/Contents/Resources" "$HOME/Library/LaunchAgents" "$HOME/Library/Logs"
 cp ".build/release/$EXECUTABLE" "$APP_DIR/Contents/MacOS/$EXECUTABLE"
 cp "Packaging/Info.plist" "$APP_DIR/Contents/Info.plist"
-if [[ -f "Assets/RollHDR.icns" ]]; then
-  cp "Assets/RollHDR.icns" "$APP_DIR/Contents/Resources/RollHDR.icns"
+if [[ -f "Assets/GlowGoblin.icns" ]]; then
+  cp "Assets/GlowGoblin.icns" "$APP_DIR/Contents/Resources/GlowGoblin.icns"
 fi
 chmod +x "$APP_DIR/Contents/MacOS/$EXECUTABLE"
 codesign --force --deep --sign - "$APP_DIR" >/dev/null
@@ -24,7 +24,6 @@ launchctl bootout "gui/$(id -u)" "$LAUNCH_AGENT" 2>/dev/null || true
 launchctl bootout "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.husky.NaturalXDR.plist" 2>/dev/null || true
 pkill -x "$EXECUTABLE" 2>/dev/null || true
 pkill -x NaturalXDR 2>/dev/null || true
-pkill -x BrightIntosh 2>/dev/null || true
 swift -e 'import CoreGraphics; CGDisplayRestoreColorSyncSettings()' 2>/dev/null || true
 
 cat > "$LAUNCH_AGENT" <<PLIST
@@ -43,9 +42,9 @@ cat > "$LAUNCH_AGENT" <<PLIST
 	<key>KeepAlive</key>
 	<true/>
 	<key>StandardOutPath</key>
-	<string>$HOME/Library/Logs/RollHDR.out.log</string>
+	<string>$HOME/Library/Logs/GlowGoblin.out.log</string>
 	<key>StandardErrorPath</key>
-	<string>$HOME/Library/Logs/RollHDR.err.log</string>
+	<string>$HOME/Library/Logs/GlowGoblin.err.log</string>
 </dict>
 </plist>
 PLIST

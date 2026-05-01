@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BUNDLE_ID="app.pingpong.rollhdr"
+BUNDLE_ID="app.glowgoblin"
 
 echo "Process:"
-pgrep -fl 'RollHDR|NaturalXDR|BrightIntosh' || true
+pgrep -fl 'GlowGoblin|NaturalXDR' || true
 
 echo
 echo "LaunchAgent:"

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-APP_NAME="RollHDR"
-EXECUTABLE="RollHDR"
-BUNDLE_ID="app.pingpong.rollhdr"
+APP_NAME="GlowGoblin"
+EXECUTABLE="GlowGoblin"
+BUNDLE_ID="app.glowgoblin"
 APP_DIR="$HOME/Applications/$APP_NAME.app"
 LAUNCH_AGENT="$HOME/Library/LaunchAgents/$BUNDLE_ID.plist"
 

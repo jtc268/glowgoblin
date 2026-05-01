@@ -2,8 +2,8 @@ import AppKit
 import Foundation
 
 let root = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-let iconset = root.appendingPathComponent("Assets/RollHDR.iconset", isDirectory: true)
-let output = root.appendingPathComponent("Assets/RollHDR.icns")
+let iconset = root.appendingPathComponent("Assets/GlowGoblin.iconset", isDirectory: true)
+let output = root.appendingPathComponent("Assets/GlowGoblin.icns")
 
 try? FileManager.default.removeItem(at: iconset)
 try FileManager.default.createDirectory(at: iconset, withIntermediateDirectories: true)
