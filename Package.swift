@@ -3,16 +3,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "RollHDR",
+    name: "GlowGoblinPackage",
     platforms: [
         .macOS(.v13)
     ],
     products: [
-        .executable(name: "RollHDR", targets: ["RollHDR"])
+        .executable(name: "GlowGoblin", targets: ["GlowGoblin"])
     ],
     targets: [
         .executableTarget(
-            name: "RollHDR",
+            name: "GlowGoblin",
             linkerSettings: [
                 .linkedFramework("AppKit"),
                 .linkedFramework("CoreImage"),
