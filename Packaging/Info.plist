@@ -5,15 +5,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>RollHDR</string>
+	<string>GlowGoblin</string>
 	<key>CFBundleIconFile</key>
-	<string>RollHDR</string>
+	<string>GlowGoblin</string>
 	<key>CFBundleIdentifier</key>
-	<string>app.pingpong.rollhdr</string>
+	<string>app.glowgoblin</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>RollHDR</string>
+	<string>GlowGoblin</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
