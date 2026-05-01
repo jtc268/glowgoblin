@@ -21,7 +21,11 @@ chmod +x "$APP_DIR/Contents/MacOS/$EXECUTABLE"
 codesign --force --deep --sign - "$APP_DIR" >/dev/null
 
 launchctl bootout "gui/$(id -u)" "$LAUNCH_AGENT" 2>/dev/null || true
+launchctl bootout "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.husky.NaturalXDR.plist" 2>/dev/null || true
 pkill -x "$EXECUTABLE" 2>/dev/null || true
+pkill -x NaturalXDR 2>/dev/null || true
+pkill -x BrightIntosh 2>/dev/null || true
+swift -e 'import CoreGraphics; CGDisplayRestoreColorSyncSettings()' 2>/dev/null || true
 
 cat > "$LAUNCH_AGENT" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>

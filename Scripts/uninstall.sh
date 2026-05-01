@@ -9,6 +9,7 @@ LAUNCH_AGENT="$HOME/Library/LaunchAgents/$BUNDLE_ID.plist"
 
 launchctl bootout "gui/$(id -u)" "$LAUNCH_AGENT" 2>/dev/null || true
 pkill -x "$EXECUTABLE" 2>/dev/null || true
+pkill -x NaturalXDR 2>/dev/null || true
 swift -e 'import CoreGraphics; CGDisplayRestoreColorSyncSettings()' 2>/dev/null || true
 rm -f "$LAUNCH_AGENT"
 rm -rf "$APP_DIR"
