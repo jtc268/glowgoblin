@@ -58,6 +58,7 @@ final class XDRBoostController {
     private var displayDecisionPauseUntil = Date.distantPast
     private var boostSuspendedForBrightnessMotion = false
     private var boostEnabledByBacklight = false
+    private var forceApplyAfterDisplayChange = false
 
     private let hdrReadyThreshold: CGFloat = 1.05
     private let gammaRestoreDelay: TimeInterval = 8
@@ -114,13 +115,20 @@ final class XDRBoostController {
 
     @objc private func screenConfigurationChanged() {
         pendingScreenRefresh = true
+        lastAppliedFactors.removeAll()
+        forceApplyAfterDisplayChange = true
+        displayDecisionPauseUntil = Date().addingTimeInterval(brightnessSettleDelay)
     }
 
     @objc private func systemWoke() {
+        lastAppliedFactors.removeAll()
+        forceApplyAfterDisplayChange = true
         refreshScreens()
     }
 
     @objc private func screensWoke() {
+        lastAppliedFactors.removeAll()
+        forceApplyAfterDisplayChange = true
         refreshScreens()
     }
 
@@ -149,6 +157,7 @@ final class XDRBoostController {
         }
         updateReadiness()
         applyBoost()
+        forceApplyAfterDisplayChange = false
     }
 
     private func updateBoostActivation() {
@@ -235,7 +244,7 @@ final class XDRBoostController {
             else { continue }
 
             let factor = gammaFactor(for: screen)
-            if let last = lastAppliedFactors[displayID], abs(last - factor) < 0.003 {
+            if !forceApplyAfterDisplayChange, let last = lastAppliedFactors[displayID], abs(last - factor) < 0.003 {
                 continue
             }
             baseline.apply(to: displayID, factor: factor)
@@ -288,6 +297,7 @@ final class XDRBoostController {
         baselineTables.removeAll()
         lastAppliedFactors.removeAll()
         notReadySince.removeAll()
+        forceApplyAfterDisplayChange = false
         CGDisplayRestoreColorSyncSettings()
     }
 }
