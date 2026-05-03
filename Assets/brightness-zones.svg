@@ -1,4 +1,4 @@
-<svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1280" height="460" viewBox="0 0 1280 460" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="panel" x1="80" y1="40" x2="1200" y2="380" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#2b2b2d"/>
@@ -14,7 +14,7 @@
       <stop offset="0.52" stop-color="#78ff93"/>
       <stop offset="1" stop-color="#fff38a"/>
     </linearGradient>
-    <filter id="softShadow" x="20" y="0" width="1240" height="420" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <filter id="softShadow" x="20" y="0" width="1240" height="460" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feDropShadow dx="0" dy="18" stdDeviation="26" flood-color="#000000" flood-opacity="0.38"/>
     </filter>
     <filter id="glow" x="570" y="120" width="590" height="165" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -24,9 +24,9 @@
     </filter>
   </defs>
 
-  <rect width="1280" height="420" fill="#0d1117"/>
+  <rect width="1280" height="460" fill="#0d1117"/>
   <g filter="url(#softShadow)">
-    <rect x="54" y="40" width="1172" height="340" rx="62" fill="url(#panel)" stroke="#8e8e93" stroke-opacity="0.78" stroke-width="2"/>
+    <rect x="54" y="40" width="1172" height="380" rx="62" fill="url(#panel)" stroke="#8e8e93" stroke-opacity="0.78" stroke-width="2"/>
   </g>
 
   <text x="108" y="104" fill="#f5f5f7" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial, sans-serif" font-size="34" font-weight="700">Display</text>
@@ -65,21 +65,20 @@
     <circle cx="1060" cy="252" r="4"/>
   </g>
 
-  <line x1="640" y1="156" x2="640" y2="286" stroke="#f5f5f7" stroke-opacity="0.72" stroke-width="2" stroke-dasharray="8 8"/>
+  <line x1="640" y1="168" x2="640" y2="284" stroke="#f5f5f7" stroke-opacity="0.72" stroke-width="2" stroke-dasharray="8 8"/>
   <circle cx="640" cy="204" r="17" fill="#0d1117" stroke="#ffffff" stroke-width="4"/>
   <circle cx="640" cy="204" r="7" fill="#ffffff"/>
 
-  <rect x="262" y="296" width="290" height="52" rx="26" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.16"/>
-  <text x="407" y="329" text-anchor="middle" fill="#f5f5f7" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="22" font-weight="700">Mac range</text>
+  <rect x="252" y="320" width="310" height="56" rx="28" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.16"/>
+  <text x="407" y="355" text-anchor="middle" fill="#f5f5f7" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="22" font-weight="700">Mac range</text>
 
-  <rect x="726" y="296" width="318" height="52" rx="26" fill="#68ff84" fill-opacity="0.14" stroke="#7dff93" stroke-opacity="0.42"/>
-  <text x="885" y="329" text-anchor="middle" fill="#baffc7" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="22" font-weight="800">Goblin range</text>
+  <rect x="726" y="320" width="318" height="56" rx="28" fill="#68ff84" fill-opacity="0.14" stroke="#7dff93" stroke-opacity="0.42"/>
+  <text x="885" y="355" text-anchor="middle" fill="#baffc7" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="22" font-weight="800">Goblin range</text>
 
-  <text x="640" y="134" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="25" font-weight="800">50% is the old 100%</text>
-  <text x="640" y="318" text-anchor="middle" fill="#c7cbd1" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="18" font-weight="600">stock max handoff</text>
+  <text x="640" y="156" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="25" font-weight="800">50% is the old 100%</text>
+  <text x="640" y="296" text-anchor="middle" fill="#c7cbd1" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="17" font-weight="600">stock max handoff</text>
   <text x="1080" y="152" text-anchor="end" fill="#fff38a" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="25" font-weight="800">100% is Goblin max</text>
-  <text x="200" y="152" fill="#f5f5f7" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="25" font-weight="800">0%</text>
 
-  <text x="407" y="365" text-anchor="middle" fill="#adb3bb" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="18" font-weight="500">native Apple brightness, untouched</text>
-  <text x="885" y="365" text-anchor="middle" fill="#adb3bb" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="18" font-weight="500">XDR headroom, same keys</text>
+  <text x="407" y="407" text-anchor="middle" fill="#adb3bb" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="18" font-weight="500">native Apple brightness, untouched</text>
+  <text x="885" y="407" text-anchor="middle" fill="#adb3bb" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="18" font-weight="500">XDR headroom, same keys</text>
 </svg>
