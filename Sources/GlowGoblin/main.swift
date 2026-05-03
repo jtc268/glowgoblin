@@ -58,11 +58,9 @@ final class XDRBoostController {
     private var displayDecisionPauseUntil = Date.distantPast
     private var boostSuspendedForBrightnessMotion = false
     private var boostEnabledByBacklight = false
-    private var lastAppliedAt: [CGDirectDisplayID: Date] = [:]
 
     private let hdrReadyThreshold: CGFloat = 1.05
     private let gammaRestoreDelay: TimeInterval = 8
-    private let gammaReapplyInterval: TimeInterval = 2
     private let maxGammaFactor: Float = 1.59
     private let boostEnableBacklightThreshold: Float = 0.72
     private let boostDisableBacklightThreshold: Float = 0.66
@@ -116,20 +114,13 @@ final class XDRBoostController {
 
     @objc private func screenConfigurationChanged() {
         pendingScreenRefresh = true
-        lastAppliedFactors.removeAll()
-        lastAppliedAt.removeAll()
-        suspendBoostForBrightnessMotion(until: Date().addingTimeInterval(brightnessSettleDelay))
     }
 
     @objc private func systemWoke() {
-        lastAppliedFactors.removeAll()
-        lastAppliedAt.removeAll()
         refreshScreens()
     }
 
     @objc private func screensWoke() {
-        lastAppliedFactors.removeAll()
-        lastAppliedAt.removeAll()
         refreshScreens()
     }
 
@@ -197,7 +188,6 @@ final class XDRBoostController {
             baselineTables.removeValue(forKey: displayID)
             readyDisplays.remove(displayID)
             lastAppliedFactors.removeValue(forKey: displayID)
-            lastAppliedAt.removeValue(forKey: displayID)
             notReadySince.removeValue(forKey: displayID)
         }
 
@@ -231,7 +221,6 @@ final class XDRBoostController {
                 if Date().timeIntervalSince(firstDrop) > gammaRestoreDelay {
                     baselineTables[displayID]?.restore(to: displayID)
                     lastAppliedFactors.removeValue(forKey: displayID)
-                    lastAppliedAt.removeValue(forKey: displayID)
                 }
             }
         }
@@ -246,15 +235,11 @@ final class XDRBoostController {
             else { continue }
 
             let factor = gammaFactor(for: screen)
-            let recentlyApplied = lastAppliedAt[displayID].map {
-                Date().timeIntervalSince($0) < gammaReapplyInterval
-            } ?? false
-            if let last = lastAppliedFactors[displayID], abs(last - factor) < 0.003, recentlyApplied {
+            if let last = lastAppliedFactors[displayID], abs(last - factor) < 0.003 {
                 continue
             }
             baseline.apply(to: displayID, factor: factor)
             lastAppliedFactors[displayID] = factor
-            lastAppliedAt[displayID] = Date()
         }
     }
 
@@ -282,7 +267,6 @@ final class XDRBoostController {
             guard let displayID = screen.displayID else { continue }
             baselineTables[displayID]?.restore(to: displayID)
             lastAppliedFactors.removeValue(forKey: displayID)
-            lastAppliedAt.removeValue(forKey: displayID)
         }
         boostSuspendedForBrightnessMotion = true
     }
@@ -303,7 +287,6 @@ final class XDRBoostController {
         }
         baselineTables.removeAll()
         lastAppliedFactors.removeAll()
-        lastAppliedAt.removeAll()
         notReadySince.removeAll()
         CGDisplayRestoreColorSyncSettings()
     }
