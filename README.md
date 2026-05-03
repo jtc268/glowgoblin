@@ -1,4 +1,8 @@
-# GlowGoblin - Make Your MacBook Pro Screen Much Brighter
+# GlowGoblin - Make Your MacBook Pro Screen Brighter
+
+```sh
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/jtc268/glowgoblin/main/Scripts/bootstrap.sh)"
+```
 
 ![GlowGoblin hero](Assets/glowgoblin-hero.png)
 
