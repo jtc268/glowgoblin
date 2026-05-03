@@ -15,7 +15,22 @@ GlowGoblin is a source-only macOS daemon that lets MacBook Pro Liquid Retina XDR
 
 It has no Dock icon, no menu bar item, and no settings. Install it once, log in, and use the regular keyboard brightness keys. When you push brightness up, it lands in the extra-bright XDR range. When you play real HDR content, including YouTube HDR videos, macOS still handles HDR playback normally.
 
-GlowGoblin is intentionally modest: it is not a color tool, not an HDR player, not a display calibration system, and not a claim that every Mac should run brighter all day. It is a tiny source-built daemon for people who want the built-in XDR panel to use more of the headroom Apple already ships.
+## Stock Max, Then Goblin Max
+
+Your Mac's normal max brightness is still there. GlowGoblin leaves the familiar MacBook Pro range alone, then opens the XDR lane at the top of the native brightness keys.
+
+Think of it as two clean zones:
+
+The mental model: 50% is the old 100%. 100% is Goblin max. The actual handoff follows your MacBook's backlight scale, but the feel is stock first, boost second.
+
+| Zone | What happens |
+|---|---|
+| Mac range | Native Apple brightness. No boost. No tricks. |
+| Goblin range | XDR headroom opens. Same keys, brighter screen. |
+
+Apple rates the MacBook Pro Liquid Retina XDR panel for [1000 nits sustained full-screen brightness and 1600 nits peak brightness](https://www.apple.com/macbook-pro/specs/) for HDR content. GlowGoblin does not pretend to be a lab meter. It simply lets the desktop ride into that built-in XDR headroom.
+
+GlowGoblin is intentionally modest: it is not a color tool, not an HDR player, not a display calibration system, and not a claim that every Mac should run brighter all day. It is a tiny source-built daemon for people who want the panel headroom Apple already ships.
 
 ![MacBook Pro XDR brightness split](Assets/xdr-brightness-split.png)
 
@@ -54,7 +69,7 @@ Not supported: 13-inch M1/M2 MacBook Pro, MacBook Air including the 15-inch Air,
 
 ## Why
 
-Apple's XDR panels can get much brighter than the normal SDR desktop limit, but macOS only exposes that headroom to HDR/EDR content. GlowGoblin keeps your normal brightness range native, then opens the XDR headroom only at the top of the keyboard brightness stack.
+Apple's XDR panels can get much brighter than the normal SDR desktop limit, but macOS usually reserves that headroom for HDR/EDR content. GlowGoblin keeps your normal brightness range native, then opens the XDR headroom only at the top of the keyboard brightness stack.
 
 The important bit is the NoFlicker gate. Below the top range, GlowGoblin tears down its boost path and leaves the display tables alone. Above it, GlowGoblin brings up the EDR layer, applies the lift, and backs off while Apple's hardware brightness stack is actively moving. The result is native Mac behavior in the normal range and goblin brightness when you push past it.
 

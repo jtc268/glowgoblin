@@ -253,8 +253,7 @@ final class XDRBoostController {
     }
 
     private func gammaFactor(for screen: NSScreen) -> Float {
-        let edr = Float(max(1.0, min(4.0, screen.maximumExtendedDynamicRangeColorComponentValue)))
-        return min(maxGammaFactor, 1.0 + ((maxGammaFactor - 1.0) * edr / 4.0))
+        maxGammaFactor
     }
 
     private func updateBrightnessMotion(now: Date) {
