@@ -23,6 +23,8 @@ Think of it as two clean zones:
 
 The mental model: 50% is the old 100%. 100% is Goblin max. The actual handoff follows your MacBook's backlight scale, but the feel is stock first, boost second.
 
+![GlowGoblin brightness zones](Assets/brightness-zones.svg)
+
 | Zone | What happens |
 |---|---|
 | Mac range | Native Apple brightness. No boost. No tricks. |

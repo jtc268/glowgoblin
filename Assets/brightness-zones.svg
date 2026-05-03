@@ -1,0 +1,85 @@
+<svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="panel" x1="80" y1="40" x2="1200" y2="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2b2b2d"/>
+      <stop offset="0.58" stop-color="#242427"/>
+      <stop offset="1" stop-color="#151719"/>
+    </linearGradient>
+    <linearGradient id="macFill" x1="200" y1="204" x2="640" y2="204" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f5f5f7"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="goblinFill" x1="640" y1="204" x2="1080" y2="204" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#dfffe7"/>
+      <stop offset="0.52" stop-color="#78ff93"/>
+      <stop offset="1" stop-color="#fff38a"/>
+    </linearGradient>
+    <filter id="softShadow" x="20" y="0" width="1240" height="420" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="26" flood-color="#000000" flood-opacity="0.38"/>
+    </filter>
+    <filter id="glow" x="570" y="120" width="590" height="165" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.43 0 0 0 0 1 0 0 0 0 0.48 0 0 0 0.72 0"/>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="420" fill="#0d1117"/>
+  <g filter="url(#softShadow)">
+    <rect x="54" y="40" width="1172" height="340" rx="62" fill="url(#panel)" stroke="#8e8e93" stroke-opacity="0.78" stroke-width="2"/>
+  </g>
+
+  <text x="108" y="104" fill="#f5f5f7" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial, sans-serif" font-size="34" font-weight="700">Display</text>
+  <text x="108" y="148" fill="#aeb4bc" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="21" font-weight="500">same Mac brightness keys, two brightness zones</text>
+
+  <g transform="translate(116 186)" stroke="#f5f5f7" stroke-width="5" stroke-linecap="round">
+    <circle cx="22" cy="22" r="10" fill="#f5f5f7" stroke="none"/>
+    <path d="M22 1V8M22 36V43M1 22H8M36 22H43M7 7L12 12M32 32L37 37M37 7L32 12M12 32L7 37"/>
+  </g>
+  <g transform="translate(1118 178)" stroke="#f5f5f7" stroke-width="5" stroke-linecap="round">
+    <circle cx="30" cy="30" r="14" fill="#f5f5f7" stroke="none"/>
+    <path d="M30 1V10M30 50V59M1 30H10M50 30H59M9 9L16 16M44 44L51 51M51 9L44 16M16 44L9 51"/>
+  </g>
+
+  <rect x="200" y="192" width="880" height="24" rx="12" fill="#55575b" opacity="0.6"/>
+  <rect x="200" y="192" width="440" height="24" rx="12" fill="url(#macFill)"/>
+  <g filter="url(#glow)">
+    <path d="M640 204H1068" stroke="url(#goblinFill)" stroke-width="24" stroke-linecap="round"/>
+  </g>
+  <rect x="200" y="192" width="880" height="24" rx="12" stroke="#ffffff" stroke-opacity="0.16"/>
+
+  <g fill="#6f747a">
+    <circle cx="220" cy="252" r="4"/>
+    <circle cx="280" cy="252" r="4"/>
+    <circle cx="340" cy="252" r="4"/>
+    <circle cx="400" cy="252" r="4"/>
+    <circle cx="460" cy="252" r="4"/>
+    <circle cx="520" cy="252" r="4"/>
+    <circle cx="580" cy="252" r="4"/>
+    <circle cx="700" cy="252" r="4"/>
+    <circle cx="760" cy="252" r="4"/>
+    <circle cx="820" cy="252" r="4"/>
+    <circle cx="880" cy="252" r="4"/>
+    <circle cx="940" cy="252" r="4"/>
+    <circle cx="1000" cy="252" r="4"/>
+    <circle cx="1060" cy="252" r="4"/>
+  </g>
+
+  <line x1="640" y1="156" x2="640" y2="286" stroke="#f5f5f7" stroke-opacity="0.72" stroke-width="2" stroke-dasharray="8 8"/>
+  <circle cx="640" cy="204" r="17" fill="#0d1117" stroke="#ffffff" stroke-width="4"/>
+  <circle cx="640" cy="204" r="7" fill="#ffffff"/>
+
+  <rect x="262" y="296" width="290" height="52" rx="26" fill="#ffffff" fill-opacity="0.1" stroke="#ffffff" stroke-opacity="0.16"/>
+  <text x="407" y="329" text-anchor="middle" fill="#f5f5f7" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="22" font-weight="700">Mac range</text>
+
+  <rect x="726" y="296" width="318" height="52" rx="26" fill="#68ff84" fill-opacity="0.14" stroke="#7dff93" stroke-opacity="0.42"/>
+  <text x="885" y="329" text-anchor="middle" fill="#baffc7" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="22" font-weight="800">Goblin range</text>
+
+  <text x="640" y="134" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="25" font-weight="800">50% is the old 100%</text>
+  <text x="640" y="318" text-anchor="middle" fill="#c7cbd1" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="18" font-weight="600">stock max handoff</text>
+  <text x="1080" y="152" text-anchor="end" fill="#fff38a" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="25" font-weight="800">100% is Goblin max</text>
+  <text x="200" y="152" fill="#f5f5f7" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="25" font-weight="800">0%</text>
+
+  <text x="407" y="365" text-anchor="middle" fill="#adb3bb" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="18" font-weight="500">native Apple brightness, untouched</text>
+  <text x="885" y="365" text-anchor="middle" fill="#adb3bb" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Arial, sans-serif" font-size="18" font-weight="500">XDR headroom, same keys</text>
+</svg>
