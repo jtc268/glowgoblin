@@ -62,8 +62,8 @@ final class XDRBoostController {
     private let hdrReadyThreshold: CGFloat = 1.05
     private let gammaRestoreDelay: TimeInterval = 8
     private let maxGammaFactor: Float = 1.59
-    private let boostEnableBacklightThreshold: Float = 0.74
-    private let boostDisableBacklightThreshold: Float = 0.70
+    private let boostEnableBacklightThreshold: Float = 0.72
+    private let boostDisableBacklightThreshold: Float = 0.66
     private let brightnessMotionThreshold: Float = 0.002
     private let brightnessSettleDelay: TimeInterval = 1.25
 
